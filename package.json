@@ -1,6 +1,8 @@
 {
   "name": "eyonetici",
   "version": "0.0.1",
+  "autor": "Görkem Apaydın",
+  "homepage": "http://gorkemapaydin.com/eyonetici",
   "private": true,
   "dependencies": {
     "@capacitor/app": "1.1.0",

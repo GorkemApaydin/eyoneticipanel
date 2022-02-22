@@ -3,17 +3,19 @@ import ExploreContainer from '../components/ExploreContainer';
 import './Home.css';
 
 const Home: React.FC = () => {
+
+  document.title = "Panel | E-Yönetici"
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Blank</IonTitle>
+          <IonTitle>E-Yönetici Panel</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
           </IonToolbar>
         </IonHeader>
         <ExploreContainer />

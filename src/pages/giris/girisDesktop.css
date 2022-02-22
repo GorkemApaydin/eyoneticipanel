@@ -1,0 +1,25 @@
+.girisCard {
+  text-align: center;
+}
+
+.loginButton {
+  width: 100%;
+}
+
+
+/* Full 117.5rem */
+/* Half 58.75rem */
+/* Quarter 29.37rem */
+
+@media (min-width: 1281px) {
+
+  .responsiveCard {
+    width: 35rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    position: relative;
+    margin: auto;
+    top: 30%;
+  }
+
+}
