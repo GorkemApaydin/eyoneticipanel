@@ -16,6 +16,7 @@ import {
   IonButton,
   IonInput,
   IonList,
+  IonToast
 } from "@ionic/react";
 
 
@@ -25,12 +26,13 @@ const GirisDesktop: React.FC = () => {
 
   const [kullaniciKodu, setKullaniciKodu] = useState("");
   const [sifre, setSifre] = useState("");
+  const [showToast, setShowToast] = useState(false);
 
   const history = useHistory()
   useEffect(() => {
     if (localStorage.getItem('user-info')) {
       history.push("/panel")
-    }else{
+    } else {
       history.push("/index")
     }
   })
@@ -45,17 +47,27 @@ const GirisDesktop: React.FC = () => {
       "dil": "string"
     });
 
-    let result = await fetch("https://e-yonetici.com.tr/api/Giris",{
+    fetch("https://e-yonetici.com.tr/api/Giris", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
       body: raw
+    }).then(response => {
+      return response.json();
+    }).then(responseData => {
+      if (responseData.aciklama === "Giriş başarılı") {
+        localStorage.setItem("user-info", responseData)
+        history.push("/panel")
+      } else {
+        setShowToast(true)
+      }
     })
-    result = await result.json()
-    localStorage.setItem("user-info",JSON.stringify(result))
-    history.push("/panel")
+
+    // localStorage.setItem("user-info", JSON.stringify(result))
+    // history.push("/panel")
+
   }
 
   return (
@@ -89,6 +101,13 @@ const GirisDesktop: React.FC = () => {
                     <br /><br />
                     <p>Şifremi Unuttum</p>
                   </IonList>
+                  <IonToast
+                    isOpen={showToast}
+                    color="danger"
+                    onDidDismiss={() => setShowToast(false)}
+                    message="Kullanıcı Kodu veya Şifreniz Yanlış"
+                    duration={3000}
+                  />
                 </IonCardContent>
               </IonCard>
             </IonCol>
