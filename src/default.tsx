@@ -1,7 +1,7 @@
 import { isPlatform } from '@ionic/react';
-import Girisdesktop from "./pages/giris/girisDesktop"
-import GirisIos from "./pages/giris/girisIos"
-import GirisAndroid from "./pages/giris/girisAndroid"
+import Girisdesktop from "./components/giris/girisDesktop"
+import GirisIos from "./components/giris/girisIos"
+import GirisAndroid from "./components/giris/girisAndroid"
 
 /* Theme variables */
 import './theme/variables.css';
